@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Mail, User, Lock } from 'lucide-react'
 import axios from 'axios'
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 const ResetPassword = () => {
 
     axios.defaults.withCredentials = true
+    const {  backendUrl } = useContext(AppContext)
 
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
@@ -43,7 +44,7 @@ const ResetPassword = () => {
     const onSubmitEmail = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post('/api/auth/send-reset-otp', { email })
+            const { data } = await axios.post(`${backendUrl}/api/auth/send-reset-otp`, { email })
 
             if (data.success) {
                 toast.success(data.message)
