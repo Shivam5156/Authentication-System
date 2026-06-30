@@ -8,7 +8,7 @@ import { AppContext } from '../context/AppContext'
 const Login = () => {
 
   const navigate = useNavigate()
-  const { setIsLoggedin, getUserdata } = useContext(AppContext)
+  const { setIsLoggedin, getUserdata, bakendUrl } = useContext(AppContext)
 
   const [data, setData] = useState({
     email: "",
@@ -38,7 +38,7 @@ const Login = () => {
       setLoading(true)
 
       axios.defaults.withCredentials = true
-      const res = await axios.post('/api/auth/login', data)
+      const res = await axios.post(`${bakendUrl}/api/auth/login`, data)
 
       if (res.data.success) {
         setIsLoggedin(true)
