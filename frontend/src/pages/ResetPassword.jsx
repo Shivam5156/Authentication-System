@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Mail, User, Lock } from 'lucide-react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { AppContext } from '../context/AppContext'
 
 const ResetPassword = () => {
 
