@@ -8,7 +8,7 @@ import { AppContext } from '../context/AppContext'
 const Register = () => {
 
     const navigate = useNavigate()
-      const { bakendUrl } = useContext(AppContext)
+      const { backendUrl } = useContext(AppContext)
 
     const [data, setData] = useState({
         name: '',
@@ -59,7 +59,7 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post(`${bakendUrl}/api/auth/register`, data)
+            const res = await axios.post(`${backendUrl}/api/auth/register`, data)
 
             if (res.data.success) {
                 toast.success("Register successful 🔥")
